@@ -1,11 +1,11 @@
-######## CONSTRUÇÃO DE FUNÇÕES NO R
+######## CONSTRUÃ‡ÃƒO DE FUNÃ‡Ã•ES NO R
 
-## As funções são úteis para armazenar passos que serão utilizados novamente com
-# certa frequência. Ao invés de digitarmos 100 linhas de código toda vez que queremos
-# executar uma determinada rotina, podemos criar funções para otimizar o workflow.
+## As funÃ§Ãµes sÃ£o Ãºteis para armazenar passos que serÃ£o utilizados novamente com
+# certa frequÃªncia. Ao invÃ©s de digitarmos 100 linhas de cÃ³digo toda vez que queremos
+# executar uma determinada rotina, podemos criar funÃ§Ãµes para otimizar o workflow.
 
 
-###### OPERADORES LÓGICOS
+###### OPERADORES LÃ“GICOS
 
 ##### OPERADORES DE IGUALDADE - "=="
 
@@ -18,7 +18,7 @@ vendas_mar <- c(8,22,33,44,85,9)
 geral <- data.frame(Fornecedor=fornecedor,
                     Janeiro=vendas_jan,
                     Fevereiro=vendas_fev,
-                    Março=vendas_mar)
+                    MarÃ§o=vendas_mar)
 ## Vamos verificar a estrutura desse df:
 str(geral)
 
@@ -32,7 +32,7 @@ sum(geral$Janeiro) == 143 # Retorna TRUE
 
 ##### OPERADORES DE DESIGUALDADE - "!="
 sum(geral$Fevereiro) != 230 # Retorna TRUE
-geral$Março[2] != 22 # Retorna FALSE
+geral$MarÃ§o[2] != 22 # Retorna FALSE
 geral$Fornecedor[3] != "Marcos" # Retorna FALSE
 
 
@@ -43,10 +43,10 @@ geral$Fornecedor[3] != "Marcos" # Retorna FALSE
 
 ###### OPERADORES COMPARATIVOS - ">, <, >=, <="
 
-## Vamos fazer algumas comparações:
+## Vamos fazer algumas comparaÃ§Ãµes:
 geral$Janeiro[2] > 20 # Retorna TRUE
 geral$Fevereiro[5] <= 7 # Retorna FALSE
-geral$Março[3] >= 33 # Retorna TRUE
+geral$MarÃ§o[3] >= 33 # Retorna TRUE
 geral$Janeiro > 20 # Retorna um vetor booleano
 
 
@@ -71,14 +71,14 @@ geral$Janeiro > 20 # Retorna um vetor booleano
 
 ##### OPERADOR &:
 geral$Janeiro[2] > 20 & geral$Fevereiro[5] <= 8 # Retorna TRUE
-geral$Março[4] <= 50 & geral$Janeiro[3] <= 1 # Retorna FALSE
+geral$MarÃ§o[4] <= 50 & geral$Janeiro[3] <= 1 # Retorna FALSE
 
 
 
 
 ##### OPERADOR |:
-geral$Março[4] <= 50 | geral$Janeiro[3] <= 1 # Retorna TRUE
-geral$Março[3] > 50 | geral$Fevereiro[4] > 100 # Retorna FALSE
+geral$MarÃ§o[4] <= 50 | geral$Janeiro[3] <= 1 # Retorna TRUE
+geral$MarÃ§o[3] > 50 | geral$Fevereiro[4] > 100 # Retorna FALSE
 
 
 
@@ -89,28 +89,28 @@ geral$Março[3] > 50 | geral$Fevereiro[4] > 100 # Retorna FALSE
 
 ###### LOOP COM "FOR" E COMANDO "CAT()"
 
-## É útil quando queremos executar o mesmo procedimento para todas as variáveis.
-# Ao invés de fazermos isso para cada uma individualmente, podemos usar um loop
+## Ã‰ Ãºtil quando queremos executar o mesmo procedimento para todas as variÃ¡veis.
+# Ao invÃ©s de fazermos isso para cada uma individualmente, podemos usar um loop
 # "for" e automatizar essa tarefa.
 
-## Forma genérica:
+## Forma genÃ©rica:
     # for (i in intervalo){                        }
 
 ## Vamos adicionar uma quinta coluna ao df:
 geral$Abril <- c(12,25,33,25,14,8)
 
-## Temos que transformar a variável "Fornecedores" (factor -> character):
+## Temos que transformar a variÃ¡vel "Fornecedores" (factor -> character):
 geral$Fornecedor <- as.character(geral$Fornecedor)
 
-## Queremos que o usuário revise os pedidos de Abril antes de enviá-lo:
+## Queremos que o usuÃ¡rio revise os pedidos de Abril antes de enviÃ¡-lo:
 for (i in 1:nrow(geral)){
   cat("O vendedor",geral$Fornecedor[i],"solicitou",geral$Abril[i],"unidades. \n")
 }
 
 ## O comando "cat()" serve para imprimir valores da seguinte forma:
       # cat("texto",variavel,"texto",variavel,"texto"...)
-## Devemos colocar \n no último texto caso quisermos pular de linha após a 
-# primeira iteração
+## Devemos colocar \n no Ãºltimo texto caso quisermos pular de linha apÃ³s a 
+# primeira iteraÃ§Ã£o
 
 ## Repare na sintaxe do intervalo
 
@@ -123,18 +123,18 @@ for (i in 1:nrow(geral)){
 ###### LOOP COM "WHILE"
 
 ## Forma geral:
-    # while(condição){            comando 1, comando2               }
+    # while(condiÃ§Ã£o){            comando 1, comando2               }
 
 ## Utilizaremos o mesmo exemplo para obter os mesmos resultados com o while:
 
-## Inicializamos a variável "j" para montarmos a condição:
+## Inicializamos a variÃ¡vel "j" para montarmos a condiÃ§Ã£o:
 j <- 1
-## Construção do while:
+## ConstruÃ§Ã£o do while:
 while(j<=nrow(geral)){
   cat("O vendedor",geral$Fornecedor[j],"solicitou",geral$Abril[j],"unidades. \n")
   j <- j + 1
 }
-## É melhor colocar uma condição genérica como essa do que um número (no caso, 6)
+## Ã‰ melhor colocar uma condiÃ§Ã£o genÃ©rica como essa do que um nÃºmero (no caso, 6)
 
 
 
@@ -149,12 +149,12 @@ while(j<=nrow(geral)){
 
 ## Forma geral:
     # if(condicao) {comando1, comando2}
-## Vamos criar uma variável no nosso df a respeito da capacidade de cada fornecedor
+## Vamos criar uma variÃ¡vel no nosso df a respeito da capacidade de cada fornecedor
 geral$Capacidade <- c(50,60,40,15,10,15)
 
 ## Vamos usar um if simples:
 i <- 3
-if(geral$Março[i] <= geral$Capacidade[i]){
+if(geral$MarÃ§o[i] <= geral$Capacidade[i]){
   print ("O pedido pode ser realizado.")
 }
 
@@ -168,16 +168,16 @@ if(geral$Março[i] <= geral$Capacidade[i]){
 
 ## Continuando o exemplo anterior:
 i <- 4
-if(geral$Março[i] <= geral$Capacidade[i]){
+if(geral$MarÃ§o[i] <= geral$Capacidade[i]){
   print ("O pedido pode ser realizado.")
 } else 
-  {print("Não é possível efetuar o pedido.")}
+  {print("NÃ£o Ã© possÃ­vel efetuar o pedido.")}
 
-## É melhor deixar o "else" na mesma linha do fechamento da chave do "if"
+## Ã‰ melhor deixar o "else" na mesma linha do fechamento da chave do "if"
 
 ## Podemos usar "if's" dentro do "else"
 
-## O "elif" no R é escrito como "else if"
+## O "elif" no R Ã© escrito como "else if"
 
 
 
@@ -186,10 +186,10 @@ if(geral$Março[i] <= geral$Capacidade[i]){
 
 ## Queremos averiguar recursivamente se todos os pedidos atendem a capacidade
 for(i in 1:nrow(geral)){
-  if(geral$Março[i] <= geral$Capacidade[i]){
+  if(geral$MarÃ§o[i] <= geral$Capacidade[i]){
     cat("O pedido de",geral$Fornecedor[i],"pode ser efetuado \n")
   }else
-  {cat("O pedido de",geral$Fornecedor[i],"NÃO pode ser efetuado \n")}
+  {cat("O pedido de",geral$Fornecedor[i],"NÃƒO pode ser efetuado \n")}
 }
 
 
@@ -199,18 +199,18 @@ for(i in 1:nrow(geral)){
 
 
 
-###### CRIAÇÃO DE FUNÇÕES - FUNCTION()
+###### CRIAÃ‡ÃƒO DE FUNÃ‡Ã•ES - FUNCTION()
 
-## Vamos criar uma função que retorna a variância de teores:
+## Vamos criar uma funÃ§Ã£o que retorna a variÃ¢ncia de teores:
 
-# Criação de vetores e depois de um df:
+# CriaÃ§Ã£o de vetores e depois de um df:
 x <- c(1:6)
 y <- c(6:11)
 au <- c(0.8,0.99,0.7,0.01,0.55,0.88)
 cu <- sample(1:10,6)
 df <- data.frame(X=x,Y=y,Au=au,Cu=cu)
 
-# Criação da função:
+# CriaÃ§Ã£o da funÃ§Ã£o:
 variancia <- function(vetor) {
   media <- mean(vetor)
   n <- length(vetor)
