@@ -1,40 +1,40 @@
 ####### ARRAYS
-# Com base nos arrays, È possÌvel combinar diversas tabelas
-# Se os vetores tÍm 1D e matrizes tem 2D, os arrays tÍm 3D
+# Com base nos arrays, √© poss√≠vel combinar diversas tabelas
+# Se os vetores t√™m 1D e matrizes tem 2D, os arrays t√™m 3D
 # Imagine que vc tenha diversas planilhas de faturamento da empresa.
-# Uma soluÁ„o È utilizar arrays para guardar todas essas tabela em um sÛ objeto.
-# Estrutura genÈrica:
+# Uma solu√ß√£o √© utilizar arrays para guardar todas essas tabela em um s√≥ objeto.
+# Estrutura gen√©rica:
     ## array (elementos,dim,dimnames=list())
       # elementos -> define-se se utilizaremos matrizes ou vetores para criar arrays
-      # dim -> entram trÍs argumentos (quantidade de linhas em cada matriz,
+      # dim -> entram tr√™s argumentos (quantidade de linhas em cada matriz,
         # quantidade de colunas em cada matriz e quantidade de matrizes)
       # dimnames -> entram 3 argumentos (nomes das linhas, nomes das colunas, nomes das matrizes)
 
 
-##### CRIA«√O DE ARRAYS
+##### CRIA√á√ÉO DE ARRAYS
 
-#### CRIA«√O DE ARRAYS COM MATRIZES
+#### CRIA√á√ÉO DE ARRAYS COM MATRIZES
 
 # Primeiro cria-se uma matriz 4x5:
 A <- matrix (1:20,4,5)
-# Criamos agora o array. Esse array conter· apenas uma matriz, por enquanto e n„o
-# ter· o par‚metro de nomes das dimensıes:
+# Criamos agora o array. Esse array conter√° apenas uma matriz, por enquanto e n√£o
+# ter√° o par√¢metro de nomes das dimens√µes:
 array (A,dim=c(4,5,1))
 
 # Podemos criar um array com duas matrizes iguais:
 array(A, dim=c(4,5,2))
-# OBS.: sabemos que È um array, pois no output aparece " , , 2"
+# OBS.: sabemos que √© um array, pois no output aparece " , , 2"
 
-# Podemos sumir com o terceiro argumento do par‚metro "dim", ou seja, o n˙mero
-# de matrizes. O resultado È a criaÁ„o de uma matriz:
+# Podemos sumir com o terceiro argumento do par√¢metro "dim", ou seja, o n√∫mero
+# de matrizes. O resultado √© a cria√ß√£o de uma matriz:
 array (A,dim=c(4,5))
-# OBS.: observe que, no output, n„o apareceu " , , "
+# OBS.: observe que, no output, n√£o apareceu " , , "
 # Nesse caso: "A <- matrix(1:20,4,5) == array(A,dim=c(4,5))"
 A == array(A,dim=c(4,5))
 
-# Podemos criar arrays de matrizes com apenas um ˙nico elemento:
+# Podemos criar arrays de matrizes com apenas um √∫nico elemento:
 array(0,dim=c(6,5,3))
-# OBS.: 3 matrizes foram criadas dentro de um mesmo array. Todos os elementos de todas as matrizes s„o 0.
+# OBS.: 3 matrizes foram criadas dentro de um mesmo array. Todos os elementos de todas as matrizes s√£o 0.
 
 # Podemos criar um array com caracteres:
 array(c("TV", "celular", "mesa", "cadeira"), dim=c(5,4,3))
@@ -43,24 +43,24 @@ array(c("TV", "celular", "mesa", "cadeira"), dim=c(5,4,3))
 
 
 
-#### CRIA«√O DE ARRAYS COM VETORES
+#### CRIA√á√ÉO DE ARRAYS COM VETORES
 
 # Inicialmente, criamos dois vetores:
 vendas <- c(10,15,20,45)
 produtos <- c("TV","geladeira","notebook","carro")
 
-## Podemos ent„o criar um array com esses vetores. Como temos 2 atributos, o n˙mero de colunas deve
-# ser igual a 2. Como temos 4 elementos, o n˙mero de linhas deve ser igual a 4. Por fim, queremos 
+## Podemos ent√£o criar um array com esses vetores. Como temos 2 atributos, o n√∫mero de colunas deve
+# ser igual a 2. Como temos 4 elementos, o n√∫mero de linhas deve ser igual a 4. Por fim, queremos 
 # criar 2 matrizes, pq sim:
 array(c(vendas,produtos),dim=c(4,2,2))
-## OBS.: a ordem dos elementos da combinaÁ„o importa! Se eu inverter "vendas" por "produtos",
-# "produtos" ser· a primeira coluna e "vendas" ser· a segunda
+## OBS.: a ordem dos elementos da combina√ß√£o importa! Se eu inverter "vendas" por "produtos",
+# "produtos" ser√° a primeira coluna e "vendas" ser√° a segunda
 array(c(produtos,vendas),dim=c(4,2,2))
 
-## Podemos atribuir nomes ‡s linhas e colunas de cada matriz, bem como atribuir nomes a cada matriz.
-# O par‚metro "dimnames" deve ser uma LISTA!!!
+## Podemos atribuir nomes √†s linhas e colunas de cada matriz, bem como atribuir nomes a cada matriz.
+# O par√¢metro "dimnames" deve ser uma LISTA!!!
 nomes_colunas <- c("Produtos","Quantidade") # nomes recebidos por atributos
-nomes_matrizes <- c("Janeiro","Fevereiro","MarÁo") # nomes de cada matriz
+nomes_matrizes <- c("Janeiro","Fevereiro","Mar√ßo") # nomes de cada matriz
 nomes_linhas <- c("Camila","Marcos","Maria","Franco")
 
 total <- array(c(produtos,vendas),dim=c(4,2,3),dimnames=list(nomes_linhas,
@@ -77,23 +77,23 @@ total <- array(c(produtos,vendas),dim=c(4,2,3),dimnames=list(nomes_linhas,
 ## Forma geral de acesso a arrays:
         # var_array[linha,coluna,matriz]
 
-## Utilizaremos o ˙ltimo array criado:
+## Utilizaremos o √∫ltimo array criado:
 total
 
-## Podemos verificar as dimensıes desse array:
+## Podemos verificar as dimens√µes desse array:
 dim(total) # 4 linhas, 2 colunas e 3 matrizes
 
 
 #### ACESSANDO MATRIZES DE ARRAYS
 
-## Queremos acessar a matriz referente ao mÍs de Fevereiro:
+## Queremos acessar a matriz referente ao m√™s de Fevereiro:
 total[,,2] # vendas fevereiro
 
-## Queremos acessar a matriz referente ao mÍs de MarÁo:
-total[,,3] # vendas marÁo
+## Queremos acessar a matriz referente ao m√™s de Mar√ßo:
+total[,,3] # vendas mar√ßo
 
 
-#### ACESSANDO COLUNAS/VARI¡VEIS DE ARRAYS
+#### ACESSANDO COLUNAS/VARI√ÅVEIS DE ARRAYS
 
 ## Queremos acessar apenas a coluna de produtos:
 total[,1,] # Retorna todas as linhas de todas as matrizes da coluna de "produtos"
@@ -114,12 +114,12 @@ total[3,,]
 total[2,,]
 
 
-#### ACESSANDO ARRAYS: COMBINA«√O DE MATRIZES, COLUNAS E LINHAS
+#### ACESSANDO ARRAYS: COMBINA√á√ÉO DE MATRIZES, COLUNAS E LINHAS
 
-## Queremos acessar a quantidade vendida (coluna 2) do mÍs de marÁo (matriz 3)
+## Queremos acessar a quantidade vendida (coluna 2) do m√™s de mar√ßo (matriz 3)
 total[,2,3]
 
-## Queremos acessar os produtos vendidos (coluna 1) no mÍs de fevereiro (matriz 2)
+## Queremos acessar os produtos vendidos (coluna 1) no m√™s de fevereiro (matriz 2)
 total[,1,2]
 
 ## Queremos acessar os produtos vendidos (coluna 1) pela vendedora Camila (linha 1)
@@ -128,10 +128,10 @@ total[1,1,]
 ## Queremos acessar as quantidades vendidas (coluna 2) pelo vendedor Franco (linha 4)
 total[4,2,]
 
-## Queremos acessar o produto vendido (coluna 1) pela vendedora Maria (linha 3), no mÍs de marÁo (matriz 3)
+## Queremos acessar o produto vendido (coluna 1) pela vendedora Maria (linha 3), no m√™s de mar√ßo (matriz 3)
 total[3,1,3]
 
-## Queremos saber as quantidades e produtos vendidos por Marcos (linha 2) no mÍs de fevereiro (matriz 2)
+## Queremos saber as quantidades e produtos vendidos por Marcos (linha 2) no m√™s de fevereiro (matriz 2)
 total[2,,2]
 
 
@@ -141,32 +141,32 @@ total[2,,2]
 
 
 
-##### MODIFICA«√O DE ELEMENTOS DE ARRAYS
+##### MODIFICA√á√ÉO DE ELEMENTOS DE ARRAYS
 
-#### MODIFICA«√O DE UM ELEMENTO DE UM ARRAY
+#### MODIFICA√á√ÉO DE UM ELEMENTO DE UM ARRAY
 
 ## Suponha que, na verdade, a vendedora Camila (linha 1) vendeu uma quantidade de 69 TVs (coluna 1)
-# no mÍs de fevereiro (matriz 2)
+# no m√™s de fevereiro (matriz 2)
 total[1,2,2] <- 69
 
 
-#### MODIFICA«√O DE UMA LINHA DE UM ARRAY
+#### MODIFICA√á√ÉO DE UMA LINHA DE UM ARRAY
 
-## Suponha que Marcos (linha 2) vendeu em marÁo (matriz 3), na verdade, 32 copos
+## Suponha que Marcos (linha 2) vendeu em mar√ßo (matriz 3), na verdade, 32 copos
 total[2,,3] <- c("copos",32)
 
 
-#### MODIFICA«√O DE UM INTERVALO DE UM ARRAY
+#### MODIFICA√á√ÉO DE UM INTERVALO DE UM ARRAY
 
 ## Suponha que queremos modificar as quantidades vendidas (coluna 2) de Maria e Franco (linhas 3 e 4)
-# no mÍs de janeiro (matriz 1)
+# no m√™s de janeiro (matriz 1)
 total[3:4,2,1] <- c(66,88)
 
 
-#### MODIFICA«√O DE ALGUMAS LINHAS N√O ADJACENTES DE UM ARRAY
+#### MODIFICA√á√ÉO DE ALGUMAS LINHAS N√ÉO ADJACENTES DE UM ARRAY
 
 ## Suponha que, na verdade, Camila, Maria e Franco (linhas 1,3 e 4) venderam uma quantidade (coluna 2) 
-# igual a 30, 45 e 59 no mÍs de marÁo (matriz 3)
+# igual a 30, 45 e 59 no m√™s de mar√ßo (matriz 3)
 total[c(1,3,4),2,3] <- c(30,45,59)
 
 
@@ -176,13 +176,13 @@ total[c(1,3,4),2,3] <- c(30,45,59)
 
 
 
-##### NOMEA«√O E OPERA«’ES COM ARRAYS
+##### NOMEA√á√ÉO E OPERA√á√ïES COM ARRAYS
 
-## Para essa seÁ„o utilizaremos um contexto mais voltado ‡ geologia
-## Primeiro criamos dois vetores que ser„o os atributos das matrizes
+## Para essa se√ß√£o utilizaremos um contexto mais voltado √† geologia
+## Primeiro criamos dois vetores que ser√£o os atributos das matrizes
 au <- 1:10
 cu <- 3:12
-## Daremos nomes a ‡s dimensıes do array:
+## Daremos nomes a √†s dimens√µes do array:
 linhas <- c("amostra 1", "amostra 2", "amostra 3", "amostra 4", 
             "amostra 5", "amostra 6", "amostra 7", "amostra 8", 
             "amostra 9", "amostra 10")
@@ -190,24 +190,24 @@ colunas <- c("Au", "Cu")
 matrizes <- c("Campanha 1", "Campanha 2", "Campanha 3")
 ## Criaremos o array "teores":
 teores <- array(c(au,cu),dim=c(10,2,3),dimnames = list(linhas, colunas,matrizes))
-## Para todas as matrizes n„o ficarem iguais, alteraremos os valores de
+## Para todas as matrizes n√£o ficarem iguais, alteraremos os valores de
 # "Au" e "Cu" para as Campanhas 2 e 3:
-teores[,c(1,2),2] <- c(0:9,20:29) # MudanÁa da Campanha 2
-teores[,c(1,2),3] <- c(5:14,15:24) # MudanÁa da Camapnha 3
+teores[,c(1,2),2] <- c(0:9,20:29) # Mudan√ßa da Campanha 2
+teores[,c(1,2),3] <- c(5:14,15:24) # Mudan√ßa da Camapnha 3
 
 ## Podemos filtrar apenas os teores de Cu (coluna 2) de todas as campanhas e
-# de todas as amostras. Teremos ent„o uma submatriz cujas linhas s„o as amostras
-# e as colunas s„o, agora, as campanhas
+# de todas as amostras. Teremos ent√£o uma submatriz cujas linhas s√£o as amostras
+# e as colunas s√£o, agora, as campanhas
 teores[,2,]
 
 ## Podemos calcular a soma de todos os teores de Cu:
-# Suponhemos que os teores sejam caracteres. Inicialmente devemos transform·-los
+# Suponhemos que os teores sejam caracteres. Inicialmente devemos transform√°-los
 # em inteiros
 as.numeric (teores[,2,])
-## Podemmos agora som·-los:
+## Podemmos agora som√°-los:
 sum(teores[,2,])
 
-## Podemos ainda, calcular a mÈdia dos teores de Au:
+## Podemos ainda, calcular a m√©dia dos teores de Au:
 mean(teores[,1,])
 
 ## Podemos calcular a mediana dos teores de Cu:
@@ -219,7 +219,7 @@ max(teores[,1,3])
 ## Qual foi o menor teor de Cu (coluna 2) obtido na Campanha 2 (matriz 2):
 min(teores[,2,2])
 
-#### OPERA«’ES BOOLEANAS COM ARRAYS
+#### OPERA√á√ïES BOOLEANAS COM ARRAYS
 
 ## Retorna TRUE para valores iguais a 9 do array:
 teores == 9
@@ -242,21 +242,21 @@ vendas_sem_2 <- vendas_sem_1 * 2
 vendas_sem_3 <- vendas_sem_1 * 4
 vendas_sem_4 <- vendas_sem_2 + 14
 
-## Vamos criar nomes para as dimensıes desse array:
+## Vamos criar nomes para as dimens√µes desse array:
 linha_ <- c("Camila","Franco","Maria")
 coluna_ <- c("Semana 1","Semana 2", "Semana 3","Semana 4")
-matriz_ <- c("Janeiro","Fevereiro","MarÁo")
+matriz_ <- c("Janeiro","Fevereiro","Mar√ßo")
 
 ## Criando o array:
 vendas_totais <- array(c(vendas_sem_1,vendas_sem_2,vendas_sem_3, vendas_sem_4),
                          dim=c(3,4,3),dimnames= list(linha_,coluna_,matriz_))
 
 
-#### OPERA«’ES COM "APPLY":
-## Essa funÁ„o calcula alguma operaÁ„o predefinida para arrays:
-## Forma genÈrica:
+#### OPERA√á√ïES COM "APPLY":
+## Essa fun√ß√£o calcula alguma opera√ß√£o predefinida para arrays:
+## Forma gen√©rica:
         # apply (X,MARGIN,FUNC)
-          # X -> È o array
+          # X -> √© o array
           # MARGIN -> 1=linha e 2=coluna
           # FUNC -> sum, median,mean,log,sqrt,etc...
 
@@ -265,8 +265,8 @@ vendas_totais <- array(c(vendas_sem_1,vendas_sem_2,vendas_sem_3, vendas_sem_4),
 apply(vendas_totais,2,sum)
 
 
-### M…DIA DE ELEMENTOS POR LINHA DE UM ARRAY:
-## Quero calcular a mÈdia de vendas por vendedor (linhas) para todos os meses:
+### M√âDIA DE ELEMENTOS POR LINHA DE UM ARRAY:
+## Quero calcular a m√©dia de vendas por vendedor (linhas) para todos os meses:
 apply(vendas_totais,1,mean)
 
 
@@ -276,17 +276,17 @@ apply(vendas_totais,1,mean)
 
 
 
-##### EXERCÕCIOS SOBRE ARRAYS:
+##### EXERC√çCIOS SOBRE ARRAYS:
 ## Considerar que:
-# Cada funcion·rio tem uma meta de 4 atendimentos por dia
-# Cada cliente atendido dever· informar Nome,
-# Sal·rio, Idade, Motivo do EmprÈstimo,Valor Solicitado.
+# Cada funcion√°rio tem uma meta de 4 atendimentos por dia
+# Cada cliente atendido dever√° informar Nome,
+# Sal√°rio, Idade, Motivo do Empr√©stimo,Valor Solicitado.
 
 
-#### QUEST√O 1 e 2: Construir um array com 3 MATRIZES contendo apenas zeros. 
-# Cada matriz deve ter 4 LINHAS e 5 COLUNAS. Renomeie as dimensıes da matriz
+#### QUEST√ÉO 1 e 2: Construir um array com 3 MATRIZES contendo apenas zeros. 
+# Cada matriz deve ter 4 LINHAS e 5 COLUNAS. Renomeie as dimens√µes da matriz
 
-coluna <- c("Nome","Sal·rio","Idade","Motivo EmprÈstimo","Valor Solicitado")
+coluna <- c("Nome","Sal√°rio","Idade","Motivo Empr√©stimo","Valor Solicitado")
 linha <- c("Cliente 1","Cliente 2","Cliente 3","Cliente 4")
 matriz <- c("Melissa M","Carlos P","Luciana T")
 planilhas <- array(0,dim=c(4,5,3),dimnames=list(linha,coluna,matriz))
@@ -294,21 +294,21 @@ planilhas <- array(0,dim=c(4,5,3),dimnames=list(linha,coluna,matriz))
 
 
 
-#### QUEST√O 3: Preencher arrays com as infos a seguir:
+#### QUEST√ÉO 3: Preencher arrays com as infos a seguir:
 
-funcionario1 <- cbind(Nome=c("Marcos","Paulo","Jo„o","Kamila"),
+funcionario1 <- cbind(Nome=c("Marcos","Paulo","Jo√£o","Kamila"),
                     Salario=c(4000,3000,4500,2300),
                     Idade=c(45,33,36,45),
                     Motivo=c("Compra de Carro","Reforma da Casa","Viagem","Compra de Casa"),
                     Valor.Pedido=c(45000,34000,20000,120000))
 
-funcionario2 <- cbind(Nome=c("Marcela","F·bio","Luana","Romero"),
+funcionario2 <- cbind(Nome=c("Marcela","F√°bio","Luana","Romero"),
                     Salario=c(3200,4500,2500,1300),
                     Idade=c(34,30,56,54),
                     Motivo=c("Compra de Carro","Viagem","Viagem","Compra de Carro"),
                     Valor.Pedido=c(75000,55000,19000,90000))
 
-funcionario3 <- cbind(Nome=c("Gustavo","Bruno","Joana","V‚nia"),
+funcionario3 <- cbind(Nome=c("Gustavo","Bruno","Joana","V√¢nia"),
                     Salario=c(11000,5600,1580,6300),
                     Idade=c(56,29,44,57),
                     Motivo=c("Compra de Casa","Viagem","Compra de Apartamento","Reforma da Casa"),
@@ -321,15 +321,15 @@ planilhas[,,3] <- funcionario3
 
 
 
-#### QUEST√O 4: Qual vendedor conceder· mais crÈdito?
+#### QUEST√ÉO 4: Qual vendedor conceder√° mais cr√©dito?
 
 # Criando vetores para a nova matriz apenas com a 5 coluna de cada matriz:
 vetor_1 <- as.numeric(planilhas[,5,1])
 vetor_2 <- as.numeric(planilhas[,5,2])
 vetor_3 <- as.numeric(planilhas[,5,3])
-# Somando os crÈditos por vendedor:
+# Somando os cr√©ditos por vendedor:
 sum(vetor_1)
-sum(vetor_2) # Esse vendedor (Carlos P) conceder· mais crÈdito
+sum(vetor_2) # Esse vendedor (Carlos P) conceder√° mais cr√©dito
 sum(vetor_3)
 
 
